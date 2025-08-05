@@ -30,12 +30,12 @@ const Index = () => {
             Exclusively businesses with both online and in-store sales
           </h1>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium flex items-center space-x-2">
+          <div className="flex flex-col sm:flex-row gap-2 justify-center mb-12">
+            <Button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg font-medium flex items-center space-x-2">
               <ShoppingBag className="h-5 w-5" />
               <span>Start Shopping</span>
             </Button>
-            <Button variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 px-8 py-3 rounded-lg font-medium flex items-center space-x-2">
+            <Button variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600 px-4 py-2 rounded-lg font-medium flex items-center space-x-2">
               <Compass className="h-5 w-5" />
               <span>Explore Shopping</span>
             </Button>
