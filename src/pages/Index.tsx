@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, ShoppingBag, Compass } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import BusinessDirectory from "./BusinessDirectory";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("product");
+  
+  const categories = [
+    { value: "product", label: "Product" },
+    { value: "service", label: "Service" },
+    { value: "business", label: "Business" }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -34,16 +42,33 @@ const Index = () => {
 
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-2 flex items-center space-x-2">
-            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
-              <SelectTrigger className="w-40 border-0 bg-yellow-400 text-black font-medium">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="product">Product</SelectItem>
-                <SelectItem value="service">Service</SelectItem>
-                <SelectItem value="business">Business</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="w-40 bg-yellow-400 rounded-md overflow-hidden">
+              <Swiper
+                direction="vertical"
+                spaceBetween={0}
+                slidesPerView={1}
+                autoplay={{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                }}
+                loop={true}
+                className="h-10"
+                modules={[]}
+              >
+                {categories.map((category) => (
+                  <SwiperSlide key={category.value} className="flex items-center justify-center">
+                    <button
+                      onClick={() => setSelectedCategory(category.value)}
+                      className={`w-full h-full text-black font-medium text-sm flex items-center justify-center ${
+                        selectedCategory === category.value ? 'bg-yellow-500' : 'bg-yellow-400'
+                      }`}
+                    >
+                      {category.label}
+                    </button>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
             
             <Input
               type="text"
