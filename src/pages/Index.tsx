@@ -5,8 +5,9 @@ import { Search, ShoppingBag, Compass } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import BusinessDirectory from "./BusinessDirectory";
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/free-mode';
+import 'swiper/css/autoplay';
 
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -53,7 +54,7 @@ const Index = () => {
                 }}
                 loop={true}
                 className="h-10"
-                modules={[]}
+                modules={[Autoplay]}
               >
                 {categories.map((category) => (
                   <SwiperSlide key={category.value} className="flex items-center justify-center">
